@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="contact.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-auto" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="SA.html" id="productLink">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup" id="popup">
+            <span class="close" id="closePopup">&times;</span>
+            <img src="images/blafka.jpg" alt="Ad">
+        </div>
+    </div>
+
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="Jumbo">
+                    <h2 class="Jumbu-Text">Visit us at Penacony, where FUN Festivities reside!</h2>
+                    <img src="images/map.png" alt="map">
+                    <h2 class="Jumb-Text">Penacony</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1>This is our shop!</h1>
+                <p>Contact us if you have any queries.</p>
+                <img src="images/penacony.jpg" alt="shop" class="penacony">
+            </div>
+            <div class="col-lg-6 form">
+                <form class="from">
+                    <div class="mb-3">
+                        <label for="nameInput" class="form-label">Name:</label>
+                        <input type="text" class="form-control" id="nameInput" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailInput" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="emailInput" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="messageInput" class="form-label">Message:</label>
+                        <textarea class="form-control" id="messageInput" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container text-center">
+            <img src="images/HOYO.png" alt="footer">
+        </div>
+    </footer>
+
+    <script>
+        window.onload = function () {
+
+            var pageTitle = document.title;
+            var attentionMessage = 'Dont leave us hanging. Buy NOW!';
+
+            document.addEventListener('visibilitychange', function (e) {
+                var isPageActive = !document.hidden;
+
+                if (!isPageActive) {
+                    document.title = attentionMessage;
+                } else {
+                    document.title = pageTitle;
+                }
+            });
+        };
+
+        var navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                var popupOverlay = document.getElementById('popupOverlay');
+                var popup = document.getElementById('popup');
+                var closePopup = document.getElementById('closePopup');
+                var linkHref = link.getAttribute('href');
+                var imagePath;
+
+                switch (linkHref) {
+                    case 'index.html':
+                        imagePath = 'images/swolf.jpg';
+                        break;
+                    case 'about.html':
+                        imagePath = 'images/kfc.webp';
+                        break;
+                    case 'SA.html':
+                        imagePath = 'images/blafka.jpg';
+                        break;
+                    case '#':
+                        imagePath = 'images/tb.webp';
+                        break;
+                    default:
+                        imagePath = '';
+                        break;
+                }
+
+                if (imagePath) {
+                    popup.querySelector('img').src = imagePath;
+                    popupOverlay.style.display = 'flex';
+                }
+
+                closePopup.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    popupOverlay.style.display = 'none';
+                    window.location.href = linkHref;
+                });
+            });
+        });
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
